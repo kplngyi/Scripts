@@ -54,12 +54,15 @@ sudo hostnamectl set-hostname "$HOSTNAME"
 echo "$IPV4_ADDR $HOSTNAME" | sudo tee -a /etc/hosts
 draw_progress "主机名设置"
 
-# 3️⃣ 安装基础软件
+# 3️⃣ 安装基础软件及 Nginx
 echo "📦 安装基础软件..."
 sudo dnf install -y epel-release
-sudo dnf install -y git vim zsh curl wget util-linux-user --setopt=progress=1
-draw_progress "基础软件安装"
+sudo dnf install -y git vim zsh curl wget util-linux-user nginx --setopt=progress=1
 
+# 启动并设置 Nginx 开机自启
+sudo systemctl enable nginx
+sudo systemctl start nginx
+draw_progress "基础软件安装 + Nginx"
 # 4️⃣ 创建新用户并设置密码
 if ! id "$NEW_USER" &>/dev/null; then
     echo "👤 创建新用户 $NEW_USER 并设置默认密码为 $USER_PASSWORD..."
