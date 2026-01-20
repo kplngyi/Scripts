@@ -11,7 +11,7 @@ set -e
 # --- 变量配置 ---
 NEW_USER="kplngyi"
 USER_PASSWORD="1"
-VIMRC_URL="https://https://raw.githubusercontent.com/kplngyi/Scripts/refs/heads/main/.vimrc"
+VIMRC_URL="https://raw.githubusercontent.com/kplngyi/Scripts/refs/heads/main/.vimrc"
 
 # --- 进度条函数 ---
 draw_progress() {
